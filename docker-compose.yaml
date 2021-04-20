@@ -1,0 +1,12 @@
+version: "3.7"
+services:
+  localstack:
+    image: localstack/localstack:latest
+    restart: always
+    ports:
+      - "4566:4566"
+      - "${PORT_WEB_UI-8080}:${PORT_WEB_UI-8080}"
+    environment:
+      - SERVICES=secretsmanager
+    volumes:
+      - "$HOME/Documents/localstack/data:/tmp/localstack"
